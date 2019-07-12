@@ -26,8 +26,7 @@ int init()
 
 int deinit()
   {
-
-  
+     return(0);
   }
 
 int start()
