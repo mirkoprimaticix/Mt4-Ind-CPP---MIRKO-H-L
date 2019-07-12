@@ -32,6 +32,28 @@ int deinit()
 
 int start()
   {
+   int    i,                        // Bar Index
+          Counted_bars;             // Number of counted bars
+//--------------------------------------------------------------------
+   Counted_bars=IndicatorCounted(); // Number of counted bars
+      
+   if(Bars<Range_n) return(0);
+   i=Bars-Range_n;
    
+   while(i>=0)                      // Loop for uncounted bars
+   {
+      
+      int iHi=iHighest(NULL,0,MODE_HIGH,Range_n,i);        //Highest bar in n bars
+      double xHig=iHigh(NULL,0,iHi);                  //Value of highest in n bars
+      HiBuffer[i]=xHig;
+     
+      int iLo=iLowest(NULL,0,MODE_LOW,Range_n,i);          //Lowest bar in n bars
+      double xLo=iLow(NULL,0,iLo);                    //Value of lowest in n bars
+      LoBuffer[i]=xLo;     
+    
+     
+      i--;
+   }
+
    return(0);
   }
